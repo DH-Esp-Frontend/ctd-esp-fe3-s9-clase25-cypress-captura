@@ -34,4 +34,15 @@ describe("Subscribe page", ()=>{
         })
     }) 
 
+    describe("On add profile", ()=>{
+        it("Should add a new input correctly", ()=>{
+            cy.get('input[placeholder="Nombre del perfil"]').should("not.exist")
+            cy.get("#add-profile-btn").click()
+            cy.get('input[placeholder="Nombre del perfil"]')
+            cy.get("#add-profile-btn").click()
+            cy.get('input[placeholder="Nombre del perfil"]').should("have.length", 2)
+
+        })
+    })
+
 })

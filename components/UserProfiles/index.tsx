@@ -22,7 +22,7 @@ const UserProfiles = () => {
           de usuario y le pasamos nuestra función dentro del evento
           onClick.
         */}
-      <button type="button" onClick={addProfile} className={styles.addButton}>
+      <button id="add-profile-btn" type="button" onClick={addProfile} className={styles.addButton}>
         +
       </button>
       {/* Hacemos un map del array que se encuentra almacenado en
@@ -41,6 +41,7 @@ const UserProfiles = () => {
           <InputField
             name={`userProfiles.${index}.value`}
             placeholder="Nombre del perfil"
+            data-testid="add-profile-input"
           />
           {/* Agregamos un botón al lado del input y llamamos a la función
               pasándole el indice del elemento a remover */}
