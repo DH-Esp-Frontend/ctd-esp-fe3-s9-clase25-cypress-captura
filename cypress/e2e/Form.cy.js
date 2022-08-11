@@ -1,22 +1,24 @@
 /// <reference types="Cypress" />
  
-describe("Subcribe page", ()=>{
+describe("Subscribe page", ()=>{
     beforeEach((()=>{
         cy.visit("http://localhost:3000/")
     }))
 
-    it("Should render succesfully", ()=>{
+    it("Should render successfully", ()=>{
         cy.get("#logo")
         cy.get("form")
     })
 
     describe("If the form is complete", ()=>{
-        it("Should send succesfully", ()=>{
+        it("Should send successfully", ()=>{
             cy.get('input[placeholder="Email"]').type("alejo@gmail.com")
             cy.get('input[placeholder="Nombre"]').type("Alejo")
             cy.get('input[placeholder="Apellido"]').type("Rojas")
             cy.get('select').select('Basico')
             cy.get("button").contains("Siguiente").click()
+                /* Luego de que nos suscribimos se muestra un alert por lo que preguntamos 
+                si se renderiza correctamente */
             cy.on('window:alert', (str) => {
                 expect(str).to.equal(`Tu cuenta se ha registrado exitosamente!`)
             })
@@ -25,7 +27,6 @@ describe("Subcribe page", ()=>{
 
     describe("If the form is incomplete", ()=>{
         it("Should not send ", ()=>{
-            cy.get("#logo")
             cy.get('input[placeholder="Nombre"]').type("Alejo")
             cy.get('input[placeholder="Apellido"]').type("Rojas")
             cy.get('select').select('Premium')
